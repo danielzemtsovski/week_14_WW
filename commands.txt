@@ -1,0 +1,13 @@
+docker build -t danielzemtsovski/api:v1 .
+docker push danielzemtsovski/api:v1
+
+oc apply -f mysql-service.yaml
+oc apply -f mysql-statefulset.yaml
+oc apply -f api-deployment.yaml
+oc apply -f api-service.yaml
+
+oc get pods
+oc get svc
+
+oc get project
+oc login --token=sha256~G14X0O74RbZVgwkUpfyikdqT6mhgNN9QwjIWfB-PN8k --server=https://api.rm2.thpm.p1.openshiftapps.com:6443
